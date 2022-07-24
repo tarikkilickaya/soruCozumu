@@ -16,7 +16,7 @@ public class Palindrome {
         String str = "madam";
         String temp = "";
 
-        for (int i = str.length() - 1; i <= 0; i--) {
+        for (int i = str.length() - 1; i >= 0; i--) {
             temp += str.charAt(i);
         }
         if (temp.equals(str)) {

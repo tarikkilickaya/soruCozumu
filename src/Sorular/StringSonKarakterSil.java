@@ -1,7 +1,5 @@
 package Sorular;
 
-
-
 public class StringSonKarakterSil {
     public static void main(String[] args) {
         /*

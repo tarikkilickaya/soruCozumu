@@ -11,7 +11,7 @@ public class CumledenKelimeCikar {
             ("merhaba dünya", "dünya") ➞ "merhaba"
         */
 
-        String cumle =  "bugün hava çok güzel";
+        String cumle = "bugün hava çok güzel";
         String silAra = "çok";
         if (cumle.contains(silAra)) {
             System.out.println("Yazinin cikarilmis hali :" + kelimeSil(cumle, silAra));
