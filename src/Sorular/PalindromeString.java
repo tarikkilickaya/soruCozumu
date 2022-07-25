@@ -19,7 +19,7 @@ public class PalindromeString {
         for (int i = str.length() - 1; i >= 0; i--) {
             temp += str.charAt(i);
         }
-        if (temp.equals(str)) {
+        if (temp.equalsIgnoreCase(str)) {
             System.out.println("palindrome");
         } else System.out.println("palindrome değil");
     }

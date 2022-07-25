@@ -28,7 +28,7 @@ public class Part3_StringArrayListSonElemandanOnceEkle {
 
     public static void sonElemandanOnceEkle(List<String> list, String str) {
 
-        list.add(3,str);
+        list.add(list.size()-1,str);
         System.out.println("sonElemandanOnceEkle methodundan sonra : " + list);
     }
 }

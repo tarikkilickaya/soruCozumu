@@ -1,6 +1,6 @@
 package Sorular;
 
-public class ArmstrongSayi {
+public class Armstrong01_Sayi {
     public static void main(String[] args) {
 
         /*  soru1: Check if the integer is an Armstrong numbers to 4 digit numbers(4 digit-> exclusive)
@@ -9,8 +9,6 @@ public class ArmstrongSayi {
         153 = 1*1*1 + 5*5*5 + 3*3*3 = 153
         370 = 3*3*3 + 7*7*7 + 0*0*0 = 370
          */
-
-
 
 
     }
