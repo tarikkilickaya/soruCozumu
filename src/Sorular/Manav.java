@@ -4,7 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Manav {
+
+    static List<String> urunler = new ArrayList<>();
+    static List<Double> urunFiyatlari = new ArrayList<>();
+    static Scanner scan = new Scanner(System.in);
+    static int urunNo;
+    static double urunMiktari;
+    static List<String> sepetUrunler = new ArrayList<>();
+    static List<Double> sepetKilo = new ArrayList<>();
+    static List<Double> sepetFiyat = new ArrayList<>();
+    static double toplamFiyat;
+
+
     /* Basarili Market-manav alış-veriş programı.
      * 1. Adım: Ürünler ve fiyatları içeren listeleri oluşturunuz.
      *         No        Ürün         Fiyat
@@ -30,51 +43,77 @@ public class Manav {
      * 7. Eğer bitirmek istiyorsa ödeme kısmına geçiniz ve
      * ödeme sonrasında programı bitiriniz.
      */
-    static List<String> urunler = new ArrayList<>();
-    static List<Double> fiyat = new ArrayList<>();
-    static List<String> sepet = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        fiyat.add(20.10);
-        fiyat.add(30.20);
-        fiyat.add(30.50);
-        fiyat.add(20.30);
-        fiyat.add(30.10);
-        fiyat.add(50.20);
-        fiyat.add(100.90);
-        fiyat.add(60.10);
-        fiyat.add(40.30);
-        fiyat.add(20.70);
-        fiyat.add(10.50);
+        urunFiyatlari.add(20.10);
+        urunFiyatlari.add(30.20);
+        urunFiyatlari.add(30.50);
+        urunFiyatlari.add(20.30);
+        urunFiyatlari.add(30.10);
+        urunFiyatlari.add(50.20);
+        urunFiyatlari.add(100.90);
+        urunFiyatlari.add(60.10);
+        urunFiyatlari.add(40.30);
+        urunFiyatlari.add(20.70);
+        urunFiyatlari.add(10.50);
 
-        urunler.add("00 - Domates");
-        urunler.add("01 - Patates");
-        urunler.add("02 - Biber");
-        urunler.add("03 - Soğan");
-        urunler.add("04 - Havuç");
-        urunler.add("05 - Elma");
-        urunler.add("06 - Muz");
-        urunler.add("07 - Çilek");
-        urunler.add("08 - Kavun");
-        urunler.add("09 - Üzüm");
-        urunler.add("10 - Limon");
+        urunler.add("Domates");
+        urunler.add("Patates");
+        urunler.add("Biber");
+        urunler.add("Sogan");
+        urunler.add("Havuc");
+        urunler.add("Elma");
+        urunler.add("Muz");
+        urunler.add("Cilek");
+        urunler.add("Kavun");
+        urunler.add("Uzum");
+        urunler.add("Limon");
 
-        while (true) {
-            Scanner scan = new Scanner(System.in);
-            System.out.println(urunler);
-            System.out.print("Ürün kodunu giriniz : ");
-            int secilenUrun = scan.nextInt();
-            System.out.print("Kaç kg almak istiyorsunuz : ");
-            int kilo = scan.nextInt();
-            sepet.add(String.valueOf(secilenUrun));
-            System.out.println("Devam etmek istiyor musunuz? \n \"Evet\" veya \"Hayır\" şeklinde cevap veriniz");
+        urunleriListele();
+
+        sepeteEkle(urunNo,urunMiktari);
+
+        do {
+            System.out.print("Hangi ürünü istiyorsunuz : ");
+            urunNo = scan.nextInt();
+            System.out.print("Ne kadar : ");
+            urunMiktari = scan.nextDouble();
+            toplamFiyat += urunMiktari * urunFiyatlari.get(urunNo);
+            System.out.print("Devam etmek istiyor musunuz : ");
             String cevap = scan.next();
-            if (cevap.equalsIgnoreCase("evet")) {
+            if (cevap.equalsIgnoreCase("e")) {
                 continue;
-            } else if (cevap.equalsIgnoreCase("hayır")) {
+            } else if (cevap.equalsIgnoreCase("h")) {
+                System.out.println("Ödeme ekranına geçiliyor");
                 break;
-            } else System.out.println("Geçerli bir cevap giriniz");
+            }
+        } while (true);
+
+        odeme(sepetFiyat);
+    }
+
+    public static void odeme(List<Double> sepetFiyat) {
+        System.out.println("Toplam tutar : " + sepetFiyat + "\nÖdemeyi nasıl yapmak istersiniz? \nCoin/Nakit/Kart/Veresiye");
+        String odemeSekli = scan.next();
+        if (odemeSekli.equalsIgnoreCase("coin")) {
+            System.out.println("Coin ile ödemeniz alındı");
+        } else if (odemeSekli.equalsIgnoreCase("nakit")) {
+            System.out.println("Nakit ödemeniz alındı");
+        } else if (odemeSekli.equalsIgnoreCase("veresiye")) {
+            System.out.println("Borcunuz versiye defterine eklendi");
+        } else System.out.println("Lütfen geçerli bir ödeme yöntemi seçiniz");
+    }
+
+
+    public static void sepeteEkle(int urunNo, double urunMiktari) {
+        sepetUrunler.add(String.valueOf(urunNo));
+        sepetUrunler.add(String.valueOf(urunMiktari));
+    }
+
+    public static void urunleriListele() {
+        for (int i = 0; i < urunler.size(); i++) {
+            System.out.println(i + "\t" + urunler.get(i) + "\t" + Manav.urunFiyatlari.get(i));
         }
     }
 }
